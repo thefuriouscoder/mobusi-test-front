@@ -1,0 +1,54 @@
+<link rel="import" href="bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
+<link rel="import" href="bower_components/paper-listbox/paper-listbox.html">
+<link rel="import" href="bower_components/paper-item/paper-item.html">
+
+<dom-module id="mobusi-venues-selector">
+    <style>
+
+        .actions {
+            text-align: left;
+            margin-top: -30px;
+            padding-left: 8px;
+        }
+
+    </style>
+    <template>
+        <iron-ajax auto url="{{url}}/api/venues" handle-as="json" on-response="venuesLoaded"></iron-ajax>
+        <div class="actions">
+            <paper-dropdown-menu label="Localización">
+                <paper-listbox class="dropdown-content" selected="0" on-iron-select="updateVenue">
+                    <paper-item>Todos</paper-item>
+                    <template is="dom-repeat" items="{{venues}}">
+                        <paper-item>{{ item.name }}</paper-item>
+                    </template>
+                </paper-listbox>
+            </paper-dropdown-menu>
+        </div>
+    </template>
+    <script>
+        Polymer({
+            is: "mobusi-venues-selector",
+            properties: {
+                venues: {
+                    type: Array,
+                    reflectToAttribute: false,
+                    notify: true
+                },
+                url: {
+                    type: String,
+                    value: "http://127.0.0.1:8080"
+                }
+            },
+            attached: function () {
+                this.venues = [];
+            },
+            venuesLoaded: function (data) {
+                this.venues = data.detail.response;
+            },
+            updateVenue: function(data) {
+                document.getElementById("mobusi-events-api").setAttribute("venue",data.target.selected);
+            }
+        });
+    </script>
+</dom-module>

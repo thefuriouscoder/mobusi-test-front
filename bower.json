@@ -1,0 +1,33 @@
+{
+  "name": "mobusi-test-front",
+  "authors": [
+    "Diego Rin Martin <diego.rin@gmail.com>"
+  ],
+  "description": "Frontend Polymer Component for Mobusi Technical Test",
+  "main": "mobusi-event-widget.html",
+  "moduleType": [
+    "amd"
+  ],
+  "keywords": [
+    "mobusi",
+    "front",
+    "polymer",
+    "component",
+    "tecnical",
+    "test"
+  ],
+  "license": "MIT",
+  "homepage": "http://www.github.com/thefuriouscoder/mobusi-test-front",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#^1.2.0",
+    "iron-ajax": "PolymerElements/iron-ajax#^1.1.1",
+    "paper-elements": "PolymerElements/paper-elements#^1.0.7"
+  }
+}

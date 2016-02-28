@@ -1,0 +1,33 @@
+<link rel="import" href="bower_components/iron-ajax/iron-ajax.html">
+
+<dom-module id="mobusi-events-api">
+    <template>
+        <iron-ajax auto url="{{url}}/api/events/venue/{{venue}}" handle-as="json" on-response="eventsLoaded"></iron-ajax>
+    </template>
+</dom-module>
+<script>
+    Polymer({
+        is: "mobusi-events-api",
+        properties: {
+            events: {
+                type: Array,
+                reflectToAttribute: false,
+                notify: true
+            },
+            venue: {
+                type: String,
+                value: null
+            },
+            url: {
+                type: String,
+                value: "http://127.0.0.1:8080"
+            }
+        },
+        attached: function () {
+            this.events = [];
+        },
+        eventsLoaded: function (data) {
+            this.events = data.detail.response;
+        }
+    });
+</script>

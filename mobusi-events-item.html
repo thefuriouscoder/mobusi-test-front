@@ -1,0 +1,41 @@
+<link rel="import" href="bower_components/paper-card/paper-card.html">
+<link rel="import" href="bower_components/paper-button/paper-button.html">
+
+<dom-module id="mobusi-events-item">
+    <style>
+        div {
+            float: left;
+            margin-left: 5px;
+            margin-top: 5px;
+        }
+        paper-card {
+            padding: 5px;
+            --paper-card-header-image-text: {
+                color: #FFFFFF;
+                background-color: #000000;
+                opacity: .8;
+                font-size: 11px;
+                padding: 10px;
+             }
+        }
+    </style>
+    <template>
+        <div>
+            <paper-card animatedShadow="true" fadeImage="true" heading="{{ event.description }}" image="http://127.0.0.1:8080{{ event.picture }}">
+
+            </paper-card>
+        </div>
+    </template>
+</dom-module>
+<script>
+    Polymer({
+        is: "mobusi-events-item",
+        properties: {
+            event: {
+                type: Object,
+                reflectToAttribute: false,
+                notify: true
+            }
+        }
+    });
+</script>
