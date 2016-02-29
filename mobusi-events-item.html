@@ -21,7 +21,7 @@
     </style>
     <template>
         <div>
-            <paper-card animatedShadow="true" fadeImage="true" heading="{{ event.description }}" image="http://127.0.0.1:8080{{ event.picture }}">
+            <paper-card animatedShadow="true" fadeImage="true" heading="{{ event.description }}" image="{{url}}{{ event.picture }}">
 
             </paper-card>
         </div>
@@ -35,6 +35,10 @@
                 type: Object,
                 reflectToAttribute: false,
                 notify: true
+            },
+            url: {
+                type: String,
+                value: "http://127.0.0.1:8080"
             }
         }
     });
